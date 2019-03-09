@@ -1,3 +1,27 @@
+const seed = [
+  {
+    id: "tt0117705",
+    name: "Space Jam",
+    year: "1996",
+    cover:
+      "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
+  },
+  {
+    id: "tt0158811",
+    name: "Muppets from Space",
+    year: "1999",
+    cover:
+      "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg"
+  },
+  {
+    id: "tt0062622",
+    name: "2001: A Space Odyssey",
+    year: "1968",
+    cover:
+      "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
+  }
+];
+
 function Header() {
   return (
     <header>
@@ -24,21 +48,16 @@ const vDOM = (
     <Header />
     <h2>En cartelera</h2>
     <section>
-      <Movie
-        name="Space Jam"
-        year="1996"
-        img_url="https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
-      />
-      <Movie
-        name="Muppets from Space"
-        year="1999"
-        img_url="https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg"
-      />
-      <Movie
-        name="2001: A Space Odyssey"
-        year="1968"
-        img_url="https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-      />
+      {seed.map(function(film) {
+        return (
+          <Movie
+            key={film.id}
+            name={film.name}
+            year={film.year}
+            img_url={film.cover}
+          />
+        );
+      })}
     </section>
   </React.Fragment>
 );
