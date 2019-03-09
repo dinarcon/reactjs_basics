@@ -108,6 +108,8 @@ class MovieApp extends React.Component {
   }
 
   render() {
+    const sortedFilms = this.state.films.sort((a, b) => b.votes - a.votes);
+
     return (
       <React.Fragment>
         <Header />
@@ -120,7 +122,7 @@ class MovieApp extends React.Component {
         )}
 
         <section>
-          {this.state.films.map(film => {
+          {sortedFilms.map(film => {
             return (
               <Movie
                 key={film.id}
