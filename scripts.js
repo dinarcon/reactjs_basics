@@ -63,7 +63,20 @@ class MovieApp extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    console.log(event.target.id);
+
+    const clickedFilmId = event.target.id;
+
+    this.setState(function(prevState) {
+      const newFilms = prevState.films.map(function(film) {
+        if (film.id === clickedFilmId) {
+          return Object.assign({}, film, { votes: film.votes + 1 });
+        } else {
+          return film;
+        }
+      });
+
+      return { films: newFilms };
+    });
   }
 
   render() {
