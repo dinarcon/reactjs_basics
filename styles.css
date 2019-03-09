@@ -8,6 +8,10 @@ section {
   align-items: center;
 }
 
+.subheading {
+  text-transform: uppercase;
+}
+
 .year {
   font-style: italic;
 }

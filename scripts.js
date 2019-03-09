@@ -1,6 +1,6 @@
 const vDOM = React.createElement(
   "p",
-  null,
+  { className: "subheading" },
   "El mejor ",
   React.createElement("strong", null, "cine al aire libre"),
   " de Managua."
