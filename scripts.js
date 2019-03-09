@@ -3,6 +3,7 @@ const seed = [
     id: "tt0117705",
     name: "Space Jam",
     year: "1996",
+    votes: 5,
     cover:
       "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
   },
@@ -10,6 +11,7 @@ const seed = [
     id: "tt0158811",
     name: "Muppets from Space",
     year: "1999",
+    votes: 3,
     cover:
       "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg"
   },
@@ -17,6 +19,7 @@ const seed = [
     id: "tt0062622",
     name: "2001: A Space Odyssey",
     year: "1968",
+    votes: 1,
     cover:
       "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
   }
@@ -38,6 +41,7 @@ function Movie(props) {
     <article>
       <h3>{props.name}</h3>
       <div className="year">Publicada en {props.year}</div>
+      <div className="votes">{props.votes} votos</div>
       <img alt="Portada de ${props.name}" src={props.img_url} />
     </article>
   );
@@ -64,6 +68,7 @@ class MovieApp extends React.Component {
                 key={film.id}
                 name={film.name}
                 year={film.year}
+                votes={film.votes}
                 img_url={film.cover}
               />
             );
