@@ -25,6 +25,25 @@ const seed = [
   }
 ];
 
+const extraFilms = [
+  {
+    id: "tt0406375",
+    name: "Zathura: A Space Adventure",
+    year: "2005",
+    votes: 2,
+    cover:
+      "https://m.media-amazon.com/images/M/MV5BMDc1NzM1OTgtOGYxMS00ZWE1LWEzZWMtNWEyOTI2NDJjOTU2XkEyXkFqcGdeQXVyNjQzNzA2NjM@._V1_SX300.jpg"
+  },
+  {
+    id: "tt0120738",
+    name: "Lost in Space",
+    year: "1998",
+    votes: 4,
+    cover:
+      "https://m.media-amazon.com/images/M/MV5BMTkwNzEyNTgyN15BMl5BanBnXkFtZTcwODk4NTU0Mg@@._V1_SX300.jpg"
+  }
+];
+
 function Header() {
   return (
     <header>
@@ -55,10 +74,12 @@ class MovieApp extends React.Component {
     super(props);
 
     this.state = {
-      films: [].concat(seed)
+      films: [].concat(seed),
+      showAddMoviesButton: true
     };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleAddMoviesClick = this.handleAddMoviesClick.bind(this);
   }
 
   handleClick(event) {
@@ -79,11 +100,25 @@ class MovieApp extends React.Component {
     });
   }
 
+  handleAddMoviesClick(event) {
+    event.preventDefault();
+
+    this.setState({ showAddMoviesButton: false });
+    this.setState({ films: this.state.films.concat(extraFilms) });
+  }
+
   render() {
     return (
       <React.Fragment>
         <Header />
         <h2>En cartelera</h2>
+
+        {this.state.showAddMoviesButton && (
+          <button onClick={this.handleAddMoviesClick}>
+            Agregar pel&iacute;culas
+          </button>
+        )}
+
         <section>
           {this.state.films.map(film => {
             return (
