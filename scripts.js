@@ -41,6 +41,9 @@ function Movie(props) {
     <article>
       <h3>{props.name}</h3>
       <div className="year">Publicada en {props.year}</div>
+      <button id={props.id} onClick={props.handleClick}>
+        +1 voto
+      </button>
       <div className="votes">{props.votes} votos</div>
       <img alt="Portada de ${props.name}" src={props.img_url} />
     </article>
@@ -54,6 +57,13 @@ class MovieApp extends React.Component {
     this.state = {
       films: [].concat(seed)
     };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    console.log(event.target.id);
   }
 
   render() {
@@ -62,13 +72,15 @@ class MovieApp extends React.Component {
         <Header />
         <h2>En cartelera</h2>
         <section>
-          {this.state.films.map(function(film) {
+          {this.state.films.map(film => {
             return (
               <Movie
                 key={film.id}
+                id={film.id}
                 name={film.name}
                 year={film.year}
                 votes={film.votes}
+                handleClick={this.handleClick}
                 img_url={film.cover}
               />
             );
