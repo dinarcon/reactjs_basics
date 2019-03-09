@@ -43,24 +43,36 @@ function Movie(props) {
   );
 }
 
-const vDOM = (
-  <React.Fragment>
-    <Header />
-    <h2>En cartelera</h2>
-    <section>
-      {seed.map(function(film) {
-        return (
-          <Movie
-            key={film.id}
-            name={film.name}
-            year={film.year}
-            img_url={film.cover}
-          />
-        );
-      })}
-    </section>
-  </React.Fragment>
-);
+class MovieApp extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      films: [].concat(seed)
+    };
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Header />
+        <h2>En cartelera</h2>
+        <section>
+          {this.state.films.map(function(film) {
+            return (
+              <Movie
+                key={film.id}
+                name={film.name}
+                year={film.year}
+                img_url={film.cover}
+              />
+            );
+          })}
+        </section>
+      </React.Fragment>
+    );
+  }
+}
 
 const renderTarget = document.getElementById("app");
-ReactDOM.render(vDOM, renderTarget);
+ReactDOM.render(<MovieApp />, renderTarget);
