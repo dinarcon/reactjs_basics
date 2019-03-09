@@ -1,7 +1,9 @@
 const vDOM = React.createElement(
   "p",
   null,
-  "El mejor cine al aire libre de Managua."
+  "El mejor ",
+  React.createElement("strong", null, "cine al aire libre"),
+  " de Managua."
 );
 
 const renderTarget = document.getElementById("app");
