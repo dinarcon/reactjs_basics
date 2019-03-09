@@ -1,9 +1,7 @@
-const vDOM = React.createElement(
-  "p",
-  { className: "subheading" },
-  "El mejor ",
-  React.createElement("strong", null, "cine al aire libre"),
-  " de Managua."
+const vDOM = (
+  <p className="subheading">
+    El mejor <strong>cine al aire libre</strong> de Managua.
+  </p>
 );
 
 const renderTarget = document.getElementById("app");
