@@ -47,9 +47,9 @@ const extraFilms = [
 function Header() {
   return (
     <header>
-      <h1>Cine de las estrellas</h1>
+      <h1>The Starry Theater</h1>
       <p className="subheading">
-        El mejor <strong>cine al aire libre</strong> de Managua.
+        The best <strong>drive-in theater</strong> around the block.
       </p>
     </header>
   );
@@ -59,11 +59,11 @@ function Movie(props) {
   return (
     <article>
       <h3>{props.name}</h3>
-      <div className="year">Publicada en {props.year}</div>
+      <div className="year">Released on {props.year}</div>
       <button id={props.id} onClick={props.handleClick}>
-        +1 voto
+        +1 vote
       </button>
-      <div className="votes">{props.votes} votos</div>
+      <div className="votes">{props.votes} votes</div>
       <img alt="Portada de ${props.name}" src={props.img_url} />
     </article>
   );
@@ -73,7 +73,7 @@ function MovieList(props) {
   const { films, handleClick } = props;
   return (
     <React.Fragment>
-      <h2>En cartelera</h2>
+      <h2>Now playing</h2>
 
       <section>
         {films.map(film => {
@@ -140,9 +140,7 @@ class MovieApp extends React.Component {
         <Header />
 
         {this.state.showAddMoviesButton && (
-          <button onClick={this.handleAddMoviesClick}>
-            Agregar pel&iacute;culas
-          </button>
+          <button onClick={this.handleAddMoviesClick}>Add movies</button>
         )}
 
         <MovieList films={sortedFilms} handleClick={this.handleClick} />
