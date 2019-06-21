@@ -94,6 +94,33 @@ function MovieList(props) {
   );
 }
 
+function AddMovieForm() {
+  return (
+    <React.Fragment>
+      <h2>Add movie</h2>
+      <form>
+        <label>
+          ID:
+          <input type="text" name="id" />
+        </label>
+        <label>
+          Name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Publication year:
+          <input type="number" name="year" />
+        </label>
+        <label>
+          URL to cover image:
+          <input type="url" name="cover" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </React.Fragment>
+  );
+}
+
 class MovieApp extends React.Component {
   constructor(props) {
     super(props);
@@ -144,6 +171,8 @@ class MovieApp extends React.Component {
         )}
 
         <MovieList films={sortedFilms} handleClick={this.handleClick} />
+
+        <AddMovieForm />
       </React.Fragment>
     );
   }

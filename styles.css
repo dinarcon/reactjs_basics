@@ -15,3 +15,7 @@ section {
 .year {
   font-style: italic;
 }
+
+input {
+  display: block;
+}
