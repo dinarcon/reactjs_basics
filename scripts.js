@@ -94,11 +94,12 @@ function MovieList(props) {
   );
 }
 
-function AddMovieForm() {
+function AddMovieForm(props) {
+  const { handleSubmit } = props;
   return (
     <React.Fragment>
       <h2>Add movie</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           ID:
           <input type="text" name="id" />
@@ -132,6 +133,7 @@ class MovieApp extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleAddMoviesClick = this.handleAddMoviesClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleClick(event) {
@@ -159,6 +161,22 @@ class MovieApp extends React.Component {
     this.setState({ films: this.state.films.concat(extraFilms) });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+
+    const formDOM = event.target;
+    const formValuesDOM = formDOM.elements;
+    const newMovie = {
+      id: formValuesDOM.id.value,
+      name: formValuesDOM.name.value,
+      year: formValuesDOM.year.value,
+      votes: 0,
+      cover: formValuesDOM.cover.value
+    };
+
+    this.setState({ films: [...this.state.films, newMovie] });
+  }
+
   render() {
     const sortedFilms = this.state.films.sort((a, b) => b.votes - a.votes);
 
@@ -172,7 +190,7 @@ class MovieApp extends React.Component {
 
         <MovieList films={sortedFilms} handleClick={this.handleClick} />
 
-        <AddMovieForm />
+        <AddMovieForm handleSubmit={this.handleSubmit} />
       </React.Fragment>
     );
   }
