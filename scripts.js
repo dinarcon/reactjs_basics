@@ -69,6 +69,31 @@ function Movie(props) {
   );
 }
 
+function MovieList(props) {
+  const { films, handleClick } = props;
+  return (
+    <React.Fragment>
+      <h2>En cartelera</h2>
+
+      <section>
+        {films.map(film => {
+          return (
+            <Movie
+              key={film.id}
+              id={film.id}
+              name={film.name}
+              year={film.year}
+              votes={film.votes}
+              handleClick={handleClick}
+              img_url={film.cover}
+            />
+          );
+        })}
+      </section>
+    </React.Fragment>
+  );
+}
+
 class MovieApp extends React.Component {
   constructor(props) {
     super(props);
@@ -113,7 +138,6 @@ class MovieApp extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <h2>En cartelera</h2>
 
         {this.state.showAddMoviesButton && (
           <button onClick={this.handleAddMoviesClick}>
@@ -121,21 +145,7 @@ class MovieApp extends React.Component {
           </button>
         )}
 
-        <section>
-          {sortedFilms.map(film => {
-            return (
-              <Movie
-                key={film.id}
-                id={film.id}
-                name={film.name}
-                year={film.year}
-                votes={film.votes}
-                handleClick={this.handleClick}
-                img_url={film.cover}
-              />
-            );
-          })}
-        </section>
+        <MovieList films={sortedFilms} handleClick={this.handleClick} />
       </React.Fragment>
     );
   }
