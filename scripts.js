@@ -203,6 +203,15 @@ function Homepage(props) {
   );
 }
 
+function NotFound() {
+  return (
+    <p>
+      Nothing to see here. <strong>Just keep swimming</strong> to the{" "}
+      <ReactRouterDOM.Link to="/">homepage</ReactRouterDOM.Link>.
+    </p>
+  );
+}
+
 class MovieApp extends React.Component {
   constructor(props) {
     super(props);
@@ -279,6 +288,7 @@ class MovieApp extends React.Component {
               );
             }}
           />
+          <ReactRouterDOM.Route component={NotFound} />
         </ReactRouterDOM.Switch>
       </ReactRouterDOM.BrowserRouter>
     );
