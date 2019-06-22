@@ -25,6 +25,8 @@ const seed = [
   }
 ];
 
+const UserContext = React.createContext();
+
 function Header() {
   return (
     <header>
@@ -152,6 +154,12 @@ class AddMovieForm extends React.Component {
       <React.Fragment>
         <h2>Add movie</h2>
 
+        <p>
+          Welcome back <strong>{this.context.name}</strong>. You have been a
+          part of this community since{" "}
+          {this.context.registration_date.toDateString()}!
+        </p>
+
         <ReactRouterDOM.Link to="/">Back to movie listing</ReactRouterDOM.Link>
 
         {!this.state.isFormValid && (
@@ -212,6 +220,8 @@ AddMovieForm.propTypes = {
   history: PropTypes.object.isRequired
 };
 
+AddMovieForm.contextType = UserContext;
+
 function Homepage(props) {
   return (
     <React.Fragment>
@@ -236,7 +246,11 @@ class MovieApp extends React.Component {
     super(props);
 
     this.state = {
-      films: [].concat(seed)
+      films: [].concat(seed),
+      user: {
+        name: "Dory",
+        registration_date: new Date("2003-05-30T12:00:00")
+      }
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -279,37 +293,42 @@ class MovieApp extends React.Component {
 
   render() {
     return (
-      <ReactRouterDOM.BrowserRouter>
-        <ReactRouterDOM.Switch>
-          <ReactRouterDOM.Route
-            exact
-            path="/"
-            render={() => {
-              const sortedFilms = this.state.films.sort(
-                (a, b) => b.votes - a.votes
-              );
-              return (
-                <Homepage films={sortedFilms} handleClick={this.handleClick} />
-              );
-            }}
-          />
-          <ReactRouterDOM.Route
-            path="/add"
-            render={routerProps => {
-              // An alternative to passing react router props this way is using
-              // withRouter withRouter higher-order component. See:
-              // https://reacttraining.com/react-router/web/api/withRouter
-              return (
-                <AddMovieForm
-                  handleSubmit={this.handleSubmit}
-                  {...routerProps}
-                />
-              );
-            }}
-          />
-          <ReactRouterDOM.Route component={NotFound} />
-        </ReactRouterDOM.Switch>
-      </ReactRouterDOM.BrowserRouter>
+      <UserContext.Provider value={this.state.user}>
+        <ReactRouterDOM.BrowserRouter>
+          <ReactRouterDOM.Switch>
+            <ReactRouterDOM.Route
+              exact
+              path="/"
+              render={() => {
+                const sortedFilms = this.state.films.sort(
+                  (a, b) => b.votes - a.votes
+                );
+                return (
+                  <Homepage
+                    films={sortedFilms}
+                    handleClick={this.handleClick}
+                  />
+                );
+              }}
+            />
+            <ReactRouterDOM.Route
+              path="/add"
+              render={routerProps => {
+                // An alternative to passing react router props this way is using
+                // withRouter withRouter higher-order component. See:
+                // https://reacttraining.com/react-router/web/api/withRouter
+                return (
+                  <AddMovieForm
+                    handleSubmit={this.handleSubmit}
+                    {...routerProps}
+                  />
+                );
+              }}
+            />
+            <ReactRouterDOM.Route component={NotFound} />
+          </ReactRouterDOM.Switch>
+        </ReactRouterDOM.BrowserRouter>
+      </UserContext.Provider>
     );
   }
 }
