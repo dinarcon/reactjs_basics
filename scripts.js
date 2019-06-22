@@ -242,13 +242,29 @@ class MovieApp extends React.Component {
   }
 
   render() {
-    const sortedFilms = this.state.films.sort((a, b) => b.votes - a.votes);
-
     return (
-      <React.Fragment>
-        <Homepage films={sortedFilms} handleClick={this.handleClick} />
-        <AddMovieForm handleSubmit={this.handleSubmit} />
-      </React.Fragment>
+      <ReactRouterDOM.BrowserRouter>
+        <ReactRouterDOM.Switch>
+          <ReactRouterDOM.Route
+            exact
+            path="/"
+            render={() => {
+              const sortedFilms = this.state.films.sort(
+                (a, b) => b.votes - a.votes
+              );
+              return (
+                <Homepage films={sortedFilms} handleClick={this.handleClick} />
+              );
+            }}
+          />
+          <ReactRouterDOM.Route
+            path="/add"
+            render={() => {
+              return <AddMovieForm handleSubmit={this.handleSubmit} />;
+            }}
+          />
+        </ReactRouterDOM.Switch>
+      </ReactRouterDOM.BrowserRouter>
     );
   }
 }
