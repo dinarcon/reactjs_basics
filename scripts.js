@@ -84,10 +84,15 @@ class AddMovieForm extends React.Component {
     };
 
     this.handleRandomClick = this.handleRandomClick.bind(this);
+    this.handleIdChange = this.handleIdChange.bind(this);
   }
 
   handleRandomClick() {
     this.setState({ id: Math.floor(Math.random() * 1000000) });
+  }
+
+  handleIdChange(event) {
+    this.setState({ id: event.target.value });
   }
 
   render() {
@@ -97,7 +102,12 @@ class AddMovieForm extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <label>
             ID:
-            <input type="text" name="id" value={this.state.id} />
+            <input
+              type="text"
+              name="id"
+              value={this.state.id}
+              onChange={this.handleIdChange}
+            />
           </label>
           <label>
             Name:
