@@ -125,6 +125,9 @@ class AddMovieForm extends React.Component {
       // Call submit handler sent via props.
       // It is important to manually pass the event.
       this.props.handleSubmit(event);
+
+      // The `history` prop provided by react router.
+      this.props.history.push("/");
     } else {
       this.setState({ isFormValid: false });
     }
@@ -264,8 +267,16 @@ class MovieApp extends React.Component {
           />
           <ReactRouterDOM.Route
             path="/add"
-            render={() => {
-              return <AddMovieForm handleSubmit={this.handleSubmit} />;
+            render={routerProps => {
+              // An alternative to passing react router props this way is using
+              // withRouter withRouter higher-order component. See:
+              // https://reacttraining.com/react-router/web/api/withRouter
+              return (
+                <AddMovieForm
+                  handleSubmit={this.handleSubmit}
+                  {...routerProps}
+                />
+              );
             }}
           />
         </ReactRouterDOM.Switch>
