@@ -80,19 +80,22 @@ class AddMovieForm extends React.Component {
     super(props);
 
     this.state = {
-      id: ""
+      id: "",
+      name: "",
+      year: "",
+      cover: ""
     };
 
     this.handleRandomClick = this.handleRandomClick.bind(this);
-    this.handleIdChange = this.handleIdChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleRandomClick() {
     this.setState({ id: Math.floor(Math.random() * 1000000) });
   }
 
-  handleIdChange(event) {
-    this.setState({ id: event.target.value });
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -106,20 +109,35 @@ class AddMovieForm extends React.Component {
               type="text"
               name="id"
               value={this.state.id}
-              onChange={this.handleIdChange}
+              onChange={this.handleChange}
             />
           </label>
           <label>
             Name:
-            <input type="text" name="name" />
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
           </label>
           <label>
             Publication year:
-            <input type="number" name="year" />
+            <input
+              type="number"
+              name="year"
+              value={this.state.year}
+              onChange={this.handleChange}
+            />
           </label>
           <label>
             URL to cover image:
-            <input type="url" name="cover" />
+            <input
+              type="url"
+              name="cover"
+              value={this.state.cover}
+              onChange={this.handleChange}
+            />
           </label>
           <input
             type="button"
