@@ -2,7 +2,7 @@ const seed = [
   {
     id: "tt0117705",
     name: "Space Jam",
-    year: "1996",
+    year: 1996,
     votes: 5,
     cover:
       "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
@@ -10,7 +10,7 @@ const seed = [
   {
     id: "tt0158811",
     name: "Muppets from Space",
-    year: "1999",
+    year: 1999,
     votes: 3,
     cover:
       "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg"
@@ -18,7 +18,7 @@ const seed = [
   {
     id: "tt0062622",
     name: "2001: A Space Odyssey",
-    year: "1968",
+    year: 1968,
     votes: 1,
     cover:
       "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
@@ -269,7 +269,7 @@ class MovieApp extends React.Component {
     const newMovie = {
       id: formValuesDOM.id.value,
       name: formValuesDOM.name.value,
-      year: formValuesDOM.year.value,
+      year: parseInt(formValuesDOM.year.value),
       votes: 0,
       cover: formValuesDOM.cover.value
     };
