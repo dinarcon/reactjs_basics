@@ -186,6 +186,15 @@ class AddMovieForm extends React.Component {
   }
 }
 
+function Homepage(props) {
+  return (
+    <React.Fragment>
+      <Header />
+      <MovieList {...props} />
+    </React.Fragment>
+  );
+}
+
 class MovieApp extends React.Component {
   constructor(props) {
     super(props);
@@ -237,10 +246,7 @@ class MovieApp extends React.Component {
 
     return (
       <React.Fragment>
-        <Header />
-
-        <MovieList films={sortedFilms} handleClick={this.handleClick} />
-
+        <Homepage films={sortedFilms} handleClick={this.handleClick} />
         <AddMovieForm handleSubmit={this.handleSubmit} />
       </React.Fragment>
     );
