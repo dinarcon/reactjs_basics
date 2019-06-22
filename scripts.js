@@ -75,39 +75,49 @@ function MovieList(props) {
   );
 }
 
-function AddMovieForm(props) {
-  const { handleSubmit } = props;
-  const idTextInputDOMRef = React.createRef();
+class AddMovieForm extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function handleRandomClick() {
-    idTextInputDOMRef.current.value = Math.floor(Math.random() * 1000000);
+    this.idTextInputDOMRef = React.createRef();
+    this.handleRandomClick = this.handleRandomClick.bind(this);
   }
 
-  return (
-    <React.Fragment>
-      <h2>Add movie</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          ID:
-          <input type="text" name="id" ref={idTextInputDOMRef} />
-        </label>
-        <label>
-          Name:
-          <input type="text" name="name" />
-        </label>
-        <label>
-          Publication year:
-          <input type="number" name="year" />
-        </label>
-        <label>
-          URL to cover image:
-          <input type="url" name="cover" />
-        </label>
-        <input type="button" value="Random ID" onClick={handleRandomClick} />
-        <input type="submit" value="Submit" />
-      </form>
-    </React.Fragment>
-  );
+  handleRandomClick() {
+    this.idTextInputDOMRef.current.value = Math.floor(Math.random() * 1000000);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <h2>Add movie</h2>
+        <form onSubmit={this.props.handleSubmit}>
+          <label>
+            ID:
+            <input type="text" name="id" ref={this.idTextInputDOMRef} />
+          </label>
+          <label>
+            Name:
+            <input type="text" name="name" />
+          </label>
+          <label>
+            Publication year:
+            <input type="number" name="year" />
+          </label>
+          <label>
+            URL to cover image:
+            <input type="url" name="cover" />
+          </label>
+          <input
+            type="button"
+            value="Random ID"
+            onClick={this.handleRandomClick}
+          />
+          <input type="submit" value="Submit" />
+        </form>
+      </React.Fragment>
+    );
+  }
 }
 
 class MovieApp extends React.Component {
