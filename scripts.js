@@ -77,13 +77,19 @@ function MovieList(props) {
 
 function AddMovieForm(props) {
   const { handleSubmit } = props;
+  const idTextInputDOMRef = React.createRef();
+
+  function handleRandomClick() {
+    idTextInputDOMRef.current.value = Math.floor(Math.random() * 1000000);
+  }
+
   return (
     <React.Fragment>
       <h2>Add movie</h2>
       <form onSubmit={handleSubmit}>
         <label>
           ID:
-          <input type="text" name="id" />
+          <input type="text" name="id" ref={idTextInputDOMRef} />
         </label>
         <label>
           Name:
@@ -97,6 +103,7 @@ function AddMovieForm(props) {
           URL to cover image:
           <input type="url" name="cover" />
         </label>
+        <input type="button" value="Random ID" onClick={handleRandomClick} />
         <input type="submit" value="Submit" />
       </form>
     </React.Fragment>
