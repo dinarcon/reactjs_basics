@@ -79,12 +79,15 @@ class AddMovieForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.idTextInputDOMRef = React.createRef();
+    this.state = {
+      id: ""
+    };
+
     this.handleRandomClick = this.handleRandomClick.bind(this);
   }
 
   handleRandomClick() {
-    this.idTextInputDOMRef.current.value = Math.floor(Math.random() * 1000000);
+    this.setState({ id: Math.floor(Math.random() * 1000000) });
   }
 
   render() {
@@ -94,7 +97,7 @@ class AddMovieForm extends React.Component {
         <form onSubmit={this.props.handleSubmit}>
           <label>
             ID:
-            <input type="text" name="id" ref={this.idTextInputDOMRef} />
+            <input type="text" name="id" value={this.state.id} />
           </label>
           <label>
             Name:
