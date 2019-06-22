@@ -50,6 +50,15 @@ function Movie(props) {
   );
 }
 
+Movie.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  votes: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  img_url: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
+
 function MovieList(props) {
   const { films, handleClick } = props;
   return (
@@ -74,6 +83,11 @@ function MovieList(props) {
     </React.Fragment>
   );
 }
+
+MovieList.propTypes = {
+  films: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
 
 class AddMovieForm extends React.Component {
   constructor(props) {
@@ -192,6 +206,11 @@ class AddMovieForm extends React.Component {
     );
   }
 }
+
+AddMovieForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
+};
 
 function Homepage(props) {
   return (
