@@ -134,9 +134,13 @@ class AddMovieForm extends React.Component {
     return (
       <React.Fragment>
         <h2>Add movie</h2>
+
+        <ReactRouterDOM.Link to="/">Back to movie listing</ReactRouterDOM.Link>
+
         {!this.state.isFormValid && (
           <p className="form--invalid">Invalid form</p>
         )}
+
         <form onSubmit={this.validateForm}>
           <label>
             ID:
@@ -190,6 +194,7 @@ function Homepage(props) {
   return (
     <React.Fragment>
       <Header />
+      <ReactRouterDOM.Link to="/add">Add movie</ReactRouterDOM.Link>
       <MovieList {...props} />
     </React.Fragment>
   );
