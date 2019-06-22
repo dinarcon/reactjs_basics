@@ -109,7 +109,7 @@ class AddMovieForm extends React.Component {
   }
 
   handleRandomClick() {
-    this.setState({ id: Math.floor(Math.random() * 1000000) });
+    this.setState({ id: "tt" + Math.floor(Math.random() * 1000000) });
   }
 
   handleChange(event) {
