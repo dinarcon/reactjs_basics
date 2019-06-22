@@ -83,11 +83,13 @@ class AddMovieForm extends React.Component {
       id: "",
       name: "",
       year: "",
-      cover: ""
+      cover: "",
+      isFormValid: true
     };
 
     this.handleRandomClick = this.handleRandomClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.validateForm = this.validateForm.bind(this);
   }
 
   handleRandomClick() {
@@ -98,11 +100,44 @@ class AddMovieForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  validateForm(event) {
+    event.preventDefault();
+    let isValid = true;
+
+    // Make sure to use an arrow function or this will not be bound to the
+    // component inside the map callback.
+    ["id", "name", "year", "cover"].map(key => {
+      // Make sure to make a comparison, not an assignment .
+      if (this.state[key] === "") {
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      this.setState({
+        id: "",
+        name: "",
+        year: "",
+        cover: "",
+        isFormValid: true
+      });
+
+      // Call submit handler sent via props.
+      // It is important to manually pass the event.
+      this.props.handleSubmit(event);
+    } else {
+      this.setState({ isFormValid: false });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
         <h2>Add movie</h2>
-        <form onSubmit={this.props.handleSubmit}>
+        {!this.state.isFormValid && (
+          <p className="form--invalid">Invalid form</p>
+        )}
+        <form onSubmit={this.validateForm}>
           <label>
             ID:
             <input

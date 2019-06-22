@@ -19,3 +19,7 @@ section {
 input {
   display: block;
 }
+
+.form--invalid {
+  color: red;
+}
