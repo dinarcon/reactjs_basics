@@ -47,7 +47,7 @@ function Movie(props) {
         +1 vote
       </button>
       <div className="votes">{props.votes} votes</div>
-      <img alt="Portada de ${props.name}" src={props.img_url} />
+      <img alt={`Portada de ${props.name}`} src={props.img_url} />
     </article>
   );
 }
