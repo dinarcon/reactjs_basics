@@ -271,7 +271,9 @@ class MovieApp extends React.Component {
         }
       });
 
-      return { films: newFilms };
+      const sortedFilms = newFilms.sort((a, b) => b.votes - a.votes);
+
+      return { films: sortedFilms };
     });
   }
 
@@ -300,12 +302,9 @@ class MovieApp extends React.Component {
               exact
               path="/"
               render={() => {
-                const sortedFilms = this.state.films.sort(
-                  (a, b) => b.votes - a.votes
-                );
                 return (
                   <Homepage
-                    films={sortedFilms}
+                    films={this.state.films}
                     handleClick={this.handleClick}
                   />
                 );
