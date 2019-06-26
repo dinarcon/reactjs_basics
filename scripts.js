@@ -290,7 +290,9 @@ class MovieApp extends React.Component {
       cover: formValuesDOM.cover.value
     };
 
-    this.setState({ films: [...this.state.films, newMovie] });
+    this.setState(function(prevState) {
+      return { films: [...prevState.films, newMovie] };
+    });
   }
 
   render() {
