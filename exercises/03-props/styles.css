@@ -1,0 +1,13 @@
+header {
+  text-align: center;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.year {
+  font-style: italic;
+}
