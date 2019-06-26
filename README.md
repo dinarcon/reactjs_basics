@@ -11,3 +11,7 @@ php -S localhost:9000
 The open your browser at http://localhost:9000/
 
 Using React Dev Tools for your browser is highly recommended.
+
+The app is also available on [CodeSandox](https://codesandbox.io/s/movie-rating-app-hlpm9)
+
+The starter template is https://codesandbox.io/s/react-elements-2evb7
