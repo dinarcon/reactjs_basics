@@ -5,7 +5,7 @@ const seed = [
     year: 1996,
     votes: 5,
     cover:
-      "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg"
+      "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
   },
   {
     id: "tt0158811",
@@ -13,7 +13,7 @@ const seed = [
     year: 1999,
     votes: 3,
     cover:
-      "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg"
+      "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg",
   },
   {
     id: "tt0062622",
@@ -21,8 +21,8 @@ const seed = [
     year: 1968,
     votes: 1,
     cover:
-      "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
-  }
+      "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+  },
 ];
 
 const UserContext = React.createContext();
@@ -58,7 +58,7 @@ Movie.propTypes = {
   votes: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   img_url: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 };
 
 function MovieList(props) {
@@ -68,7 +68,7 @@ function MovieList(props) {
       <h2>Now playing</h2>
 
       <section>
-        {films.map(film => {
+        {films.map((film) => {
           return (
             <Movie
               key={film.id}
@@ -88,7 +88,7 @@ function MovieList(props) {
 
 MovieList.propTypes = {
   films: PropTypes.array.isRequired,
-  handleClick: PropTypes.func.isRequired
+  handleClick: PropTypes.func.isRequired,
 };
 
 class AddMovieForm extends React.Component {
@@ -100,7 +100,7 @@ class AddMovieForm extends React.Component {
       name: "",
       year: "",
       cover: "",
-      isFormValid: true
+      isFormValid: true,
     };
 
     this.handleRandomClick = this.handleRandomClick.bind(this);
@@ -122,7 +122,7 @@ class AddMovieForm extends React.Component {
 
     // Make sure to use an arrow function or this will not be bound to the
     // component inside the map callback.
-    ["id", "name", "year", "cover"].map(key => {
+    ["id", "name", "year", "cover"].map((key) => {
       // Make sure to make a comparison, not an assignment .
       if (this.state[key] === "") {
         isValid = false;
@@ -135,7 +135,7 @@ class AddMovieForm extends React.Component {
         name: "",
         year: "",
         cover: "",
-        isFormValid: true
+        isFormValid: true,
       });
 
       // Call submit handler sent via props.
@@ -217,7 +217,7 @@ class AddMovieForm extends React.Component {
 
 AddMovieForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
 
 AddMovieForm.contextType = UserContext;
@@ -249,8 +249,8 @@ class MovieApp extends React.Component {
       films: [].concat(seed),
       user: {
         name: "Dory",
-        registration_date: new Date("2003-05-30T12:00:00")
-      }
+        registration_date: new Date("2003-05-30T12:00:00"),
+      },
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -262,8 +262,8 @@ class MovieApp extends React.Component {
 
     const clickedFilmId = event.target.id;
 
-    this.setState(function(prevState) {
-      const newFilms = prevState.films.map(function(film) {
+    this.setState(function (prevState) {
+      const newFilms = prevState.films.map(function (film) {
         if (film.id === clickedFilmId) {
           return Object.assign({}, film, { votes: film.votes + 1 });
         } else {
@@ -287,10 +287,10 @@ class MovieApp extends React.Component {
       name: formValuesDOM.name.value,
       year: parseInt(formValuesDOM.year.value),
       votes: 0,
-      cover: formValuesDOM.cover.value
+      cover: formValuesDOM.cover.value,
     };
 
-    this.setState(function(prevState) {
+    this.setState(function (prevState) {
       return { films: [...prevState.films, newMovie] };
     });
   }
@@ -314,7 +314,7 @@ class MovieApp extends React.Component {
             />
             <ReactRouterDOM.Route
               path="/add"
-              render={routerProps => {
+              render={(routerProps) => {
                 // An alternative to passing react router props this way is using
                 // withRouter withRouter higher-order component. See:
                 // https://reacttraining.com/react-router/web/api/withRouter
