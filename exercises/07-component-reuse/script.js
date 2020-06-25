@@ -9,33 +9,27 @@ function Header() {
   );
 }
 
-function Candidate() {
-  return (
-    <article>
-      <h3>React</h3>
-      <div className="year">Released in 2013</div>
-      <img alt="React logo" src="./images/react.png" />
-    </article>
-  );
-}
-
+// TODO 1: Extract article component with React information into a new Candidate component.
+// TODO 2: Render the Candidate component three times.
 function CandidateList() {
   return (
     <React.Fragment>
       <h2>Candidates</h2>
       <section>
-        <Candidate />
-        <Candidate />
-        <Candidate />
+        <article>
+          <h3>React</h3>
+          <div className="year">Released in 2013</div>
+          <img alt="React logo" src="../../images/react.png" />
+        </article>
         <article>
           <h3>Vue</h3>
           <div className="year">Released in 2014</div>
-          <img alt="Vue logo" src="./images/vue.png" />
+          <img alt="Vue logo" src="../../images/vue.png" />
         </article>
         <article>
           <h3>Angular</h3>
           <div className="year">Released in 2010</div>
-          <img alt="Angular logo" src="./images/angular.png" />
+          <img alt="Angular logo" src="../../images/angular.png" />
         </article>
       </section>
     </React.Fragment>
