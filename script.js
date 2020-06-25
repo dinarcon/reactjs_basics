@@ -9,12 +9,12 @@ function Header() {
   );
 }
 
-function Candidate(props) {
+function Candidate({ name, year, img_url }) {
   return (
     <article>
-      <h3>{props.name}</h3>
-      <div className="year">Released in {props.year}</div>
-      <img alt={`${props.name} logo`} src={props.img_url} />
+      <h3>{name}</h3>
+      <div className="year">Released in {year}</div>
+      <img alt={`${name} logo`} src={img_url} />
     </article>
   );
 }
@@ -24,9 +24,9 @@ function CandidateList() {
     <React.Fragment>
       <h2>Candidates</h2>
       <section>
-        <Candidate name="React" year="2013" img_url="./images/react.png" />
-        <Candidate name="Vue" year="2014" img_url="./images/vue.png" />
-        <Candidate name="Angular" year="2010" img_url="./images/angular.png" />
+        {fetchData().map(({ id, name, year, logo }) => {
+          return <Candidate key={id} name={name} year={year} img_url={logo} />;
+        })}
       </section>
     </React.Fragment>
   );
@@ -42,5 +42,27 @@ function RatingApp() {
 }
 
 const domContainer = document.getElementById("react-app");
-
 ReactDOM.render(<RatingApp />, domContainer);
+
+function fetchData() {
+  return [
+    {
+      id: "framework-1",
+      name: "React",
+      year: 2013,
+      logo: "./images/react.png",
+    },
+    {
+      id: "framework-2",
+      name: "Vue",
+      year: 2014,
+      logo: "./images/vue.png",
+    },
+    {
+      id: "framework-3",
+      name: "Angular",
+      year: 2010,
+      logo: "./images/angular.png",
+    },
+  ];
+}
