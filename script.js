@@ -9,12 +9,12 @@ function Header() {
   );
 }
 
-function Candidate() {
+function Candidate(props) {
   return (
     <article>
-      <h3>React</h3>
-      <div className="year">Released in 2013</div>
-      <img alt="React logo" src="./images/react.png" />
+      <h3>{props.name}</h3>
+      <div className="year">Released in {props.year}</div>
+      <img alt={`${props.name} logo`} src={props.img_url} />
     </article>
   );
 }
@@ -24,19 +24,9 @@ function CandidateList() {
     <React.Fragment>
       <h2>Candidates</h2>
       <section>
-        <Candidate />
-        <Candidate />
-        <Candidate />
-        <article>
-          <h3>Vue</h3>
-          <div className="year">Released in 2014</div>
-          <img alt="Vue logo" src="./images/vue.png" />
-        </article>
-        <article>
-          <h3>Angular</h3>
-          <div className="year">Released in 2010</div>
-          <img alt="Angular logo" src="./images/angular.png" />
-        </article>
+        <Candidate name="React" year="2013" img_url="./images/react.png" />
+        <Candidate name="Vue" year="2014" img_url="./images/vue.png" />
+        <Candidate name="Angular" year="2010" img_url="./images/angular.png" />
       </section>
     </React.Fragment>
   );
