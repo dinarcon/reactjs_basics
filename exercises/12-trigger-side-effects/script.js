@@ -34,34 +34,25 @@ Candidate.propTypes = {
 };
 
 function CandidateList() {
+  const [candidatesData, setCandidatesData] = React.useState([]);
+
+  // TODO 1: Leverage the useEffect hook to trigger a side effect.
+  // Use the fetchData function to load the candidates data from inside the hook.
+  // Sort the results with the sortByVotes function.
+  // Set the candidatesData state to the sorted results.
+  // Make sure the data is fetched only once instead of on every render.
+
   const sortByVotes = (data) => {
     return data.sort((a, b) => b.votes - a.votes);
   };
 
-  const [ratings, setRatings] = React.useState([]);
-
-  React.useEffect(() => {
-    const ratingData = fetchData();
-    setRatings(sortByVotes(ratingData));
-
-    // useEffect can optionally return a clean up function.
-    // It is executed before the effect is run again and when the component unmounts.
-    // It can be used to clear a timer, unsubscribe from a service, etc.
-    // This empty function is just a placeholder for reference.
-    return function cleanup() {};
-
-    // The second argument to useEffect is an array of variables.
-    // If any of the variables changes between renders, the effect is run again.
-    // An empty array means that the effect should be executed only once when the component mounts.
-    // Not providing a value for this argument makes the effect run on every render of the component.
-    // Generally, this array includes the variables used within useEffect. Lint rules exist to check this.
-  }, []);
-
+  // TODO 2: Replace the call to fetchData in the return value below.
+  // Use the candidatesData state instead.
   return (
     <React.Fragment>
       <h2>Candidates</h2>
       <section>
-        {ratings.map(({ id, name, year, votes, logo }) => {
+        {fetchData().map(({ id, name, year, votes, logo }) => {
           return (
             <Candidate
               key={id}
@@ -96,21 +87,21 @@ function fetchData() {
       name: "React",
       year: 2013,
       votes: 7,
-      logo: "./images/react.png",
+      logo: "../../images/react.png",
     },
     {
       id: "framework-2",
       name: "Vue",
       year: 2014,
       votes: 3,
-      logo: "./images/vue.png",
+      logo: "../../images/vue.png",
     },
     {
       id: "framework-3",
       name: "Angular",
       year: 2010,
       votes: 5,
-      logo: "./images/angular.png",
+      logo: "../../images/angular.png",
     },
   ];
 }
