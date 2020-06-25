@@ -9,6 +9,7 @@ function Header() {
   );
 }
 
+// TODO 1: Add prop types to Candidate component.
 function Candidate({ name, year, img_url }) {
   return (
     <article>
@@ -18,12 +19,6 @@ function Candidate({ name, year, img_url }) {
     </article>
   );
 }
-
-Candidate.propTypes = {
-  name: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
-  img_url: PropTypes.string.isRequired,
-};
 
 function CandidateList() {
   return (
@@ -56,19 +51,19 @@ function fetchData() {
       id: "framework-1",
       name: "React",
       year: 2013,
-      logo: "./images/react.png",
+      logo: "../../images/react.png",
     },
     {
       id: "framework-2",
       name: "Vue",
       year: 2014,
-      logo: "./images/vue.png",
+      logo: "../../images/vue.png",
     },
     {
       id: "framework-3",
       name: "Angular",
       year: 2010,
-      logo: "./images/angular.png",
+      logo: "../../images/angular.png",
     },
   ];
 }
