@@ -2,16 +2,12 @@
 
 Example app created by [Mauricio Dinarte](https://www.drupal.org/u/dinarcon) ([@dinarcon](https://twitter.com/dinarcon)) to explain React JS concepts.
 
-You need to serve the files from a web server. Any language's built-in server will work. For example, to run using PHP open the terminal, change directory into the app's code, and run:
+You need to serve the files from a web server. Any language's built-in server will work. Open the terminal, change directory into the app's code, and run the web server. Below are some alternatives for different languages:
 
 ```
-php -S localhost:9000
+php -S localhost:5500
 ```
 
-The open your browser at http://localhost:9000/
+Then open your browser at http://localhost:5500/
 
-Using React Dev Tools for your browser is highly recommended.
-
-The app is also available on [CodeSandox](https://codesandbox.io/s/movie-rating-app-hlpm9)
-
-The starter template is https://codesandbox.io/s/react-elements-2evb7
+Using the React Dev Tools extension for your browser is highly recommended.

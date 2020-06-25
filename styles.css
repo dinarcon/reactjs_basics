@@ -2,24 +2,16 @@ header {
   text-align: center;
 }
 
+.subheading {
+  text-transform: uppercase;
+}
+
 section {
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
 }
 
-.subheading {
-  text-transform: uppercase;
-}
-
 .year {
   font-style: italic;
-}
-
-input {
-  display: block;
-}
-
-.form--invalid {
-  color: red;
 }
