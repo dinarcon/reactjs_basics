@@ -1,6 +1,7 @@
+// TODO 1: Update React element rendering the p tag to use the "subheading" class.
 const element = React.createElement(
   "p",
-  { className: "subheading" },
+  null,
   "Vote for ",
   React.createElement("strong", null, "your favorite"),
   " one."
