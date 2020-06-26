@@ -1,0 +1,21 @@
+header {
+  text-align: center;
+}
+
+.subheading {
+  text-transform: uppercase;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+
+.year {
+  font-style: italic;
+}
+
+button {
+  display: block;
+}
