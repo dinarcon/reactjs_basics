@@ -1,27 +1,24 @@
 const seed = [
   {
-    id: "tt0117705",
-    name: "Space Jam",
-    year: 1996,
+    id: "framework-1",
+    name: "React",
+    year: 2013,
+    votes: 7,
+    cover: "./images/react.png",
+  },
+  {
+    id: "framework-2",
+    name: "Vue",
+    year: 2014,
     votes: 5,
-    cover:
-      "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
+    cover: "./images/vue.png",
   },
   {
-    id: "tt0158811",
-    name: "Muppets from Space",
-    year: 1999,
+    id: "framework-3",
+    name: "Angular",
+    year: 2010,
     votes: 3,
-    cover:
-      "https://m.media-amazon.com/images/M/MV5BODI2Zjc5YzMtNzQ1NS00NGVmLWExYzgtMzFlY2NiMGMzZjRjXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg",
-  },
-  {
-    id: "tt0062622",
-    name: "2001: A Space Odyssey",
-    year: 1968,
-    votes: 1,
-    cover:
-      "https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    cover: "./images/angular.png",
   },
 ];
 
@@ -30,9 +27,9 @@ const UserContext = React.createContext();
 function Header() {
   return (
     <header>
-      <h1>The Starry Theater</h1>
+      <h1>JavaScript Frameworks</h1>
       <p className="subheading">
-        The best <strong>drive-in theater</strong> around the block.
+        Vote for <strong>your favorite</strong> one.
       </p>
     </header>
   );
@@ -42,7 +39,7 @@ function Movie(props) {
   return (
     <article>
       <h3>{props.name}</h3>
-      <div className="year">Released on {props.year}</div>
+      <div className="year">Released in {props.year}</div>
       <button id={props.id} onClick={props.handleClick}>
         +1 vote
       </button>
@@ -65,7 +62,7 @@ function MovieList(props) {
   const { films, handleClick } = props;
   return (
     <React.Fragment>
-      <h2>Now playing</h2>
+      <h2>Candidates</h2>
 
       <section>
         {films.map((film) => {
@@ -226,7 +223,7 @@ function Homepage(props) {
   return (
     <React.Fragment>
       <Header />
-      <ReactRouterDOM.Link to="/add">Add movie</ReactRouterDOM.Link>
+      <ReactRouterDOM.Link to="/add">Add framework</ReactRouterDOM.Link>
       <MovieList {...props} />
     </React.Fragment>
   );
